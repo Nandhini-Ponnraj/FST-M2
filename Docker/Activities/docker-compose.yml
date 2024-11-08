@@ -1,0 +1,14 @@
+services:
+   #Redis database
+   redis-server:
+      image: 'redis'
+      volumes:
+        - ./redis:/data
+      command: ["redis-server","--save","1 1"]
+  # Node application:
+   node-app:
+      restart: always
+      build: ./
+      image: docker.io/nandhini2ponn/visits
+      ports:
+       - "8081:8081"
